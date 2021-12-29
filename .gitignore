@@ -1,0 +1,7 @@
+# Nextflow
+.nextflow
+.work
+*.log
+
+# Snakemake
+.snakemake
