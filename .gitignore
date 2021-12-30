@@ -2,6 +2,7 @@
 .nextflow
 .work
 *.log
+results
 
 # Snakemake
 .snakemake
