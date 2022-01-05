@@ -1,0 +1,5 @@
+java -jar /NGStools/Trimmomatic-0.39/trimmomatic.jar \
+    PE -phred33 \
+    ../.data/fastq/sample1_1.fastq ../.data/fastq/sample1_2.fastq \
+    sample1_1.trimmed.fastq sample1_1.untrimmed.fastq sample1_2.trimmed.fastq sample1_2.untrimmed.fastq \
+    LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:36
