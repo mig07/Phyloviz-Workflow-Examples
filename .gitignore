@@ -6,3 +6,6 @@ results
 
 # Snakemake
 .snakemake
+
+# Misc
+*.csv
