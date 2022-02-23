@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 
 params.saveMode = 'copy'
-params.filePattern = './*_{1,2}.fastq'
+params.filePattern = '../../../res/trimmomatic_spades_abricate/fastq/*_{1,2}.fastq'
 params.resultsDir = 'results'
 
 Channel.fromPath(params.filePattern)
