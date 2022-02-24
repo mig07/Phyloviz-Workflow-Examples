@@ -1,7 +1,3 @@
-rule all:
-    input:
-        "abricate_result.csv"
-
 rule Trimmomatic:
     shell:
         """
