@@ -26,10 +26,10 @@ with DAG('Trimmomatic-Spades-Abricate-DockerOperators', default_args=default_arg
                 PE -phred33 \
                 /fastq/sample1_1.fastq \
                 /fastq/sample1_2.fastq \
-                sample1_R1_trimmed.fastq \
-                sample1_R1_untrimmed.fastq \
-                sample1_R2_trimmed.fastq \
-                sample1_R2_untrimmed.fastq \
+                /fastq/sample1_R1_trimmed.fastq \
+                /fastq/sample1_R1_untrimmed.fastq \
+                /fastq/sample1_R2_trimmed.fastq \
+                /fastq/sample1_R2_untrimmed.fastq \
                 ILLUMINACLIP:/NGStools/Trimmomatic-0.39/adapters/TruSeq3-SE.fa:2:30:10',
         auto_remove=True,
         docker_url='unix://var/run/docker.sock',
