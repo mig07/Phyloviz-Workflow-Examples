@@ -1,11 +1,14 @@
 # Nextflow
 .nextflow
-.work
+.nextflow.*
+work
 *.log
-results
 
 # Snakemake
 .snakemake
 
 # Misc
 *.csv
+results
+.results
+output
