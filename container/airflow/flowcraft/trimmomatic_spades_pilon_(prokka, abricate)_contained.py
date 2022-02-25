@@ -51,15 +51,20 @@ with DAG('Trimmomatic-Spades-Pilon-Prokka_Abricate-DockerOperators', default_arg
         network_mode='bridge'
     )
 
-    pilon = DockerOperator(
+    #pilon = DockerOperator(
+        #task_id='pilon',
+        #image='pilon:latest',
+        #api_version='auto',
+        #mounts=[Mount(target='/fastq', source='/opt/.fastqTest', type='bind')],
+        #command='java -jar pilon-1.22.jar --genome /fastq/fq_spades.fasta/contigs.fasta --output pilonOuts',
+        #auto_remove=True,
+        #docker_url='unix://var/run/docker.sock',
+        #network_mode='bridge'
+    #)
+
+    pilon = BashOperator(
         task_id='pilon',
-        image='pilon:latest',
-        api_version='auto',
-        mounts=[Mount(target='/fastq', source='/opt/.fastqTest', type='bind')],
-        command='java -jar pilon-1.22.jar --genome /fastq/fq_spades.fasta/contigs.fasta --output pilonOuts',
-        auto_remove=True,
-        docker_url='unix://var/run/docker.sock',
-        network_mode='bridge'
+        bash_command='sleep 2',
     )
 
     prokka = BashOperator(

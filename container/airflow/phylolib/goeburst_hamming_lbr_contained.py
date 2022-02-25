@@ -21,8 +21,8 @@ with DAG('Hamming-GoeBURST-Lbr-DockerOperators', default_args=default_args, sche
         task_id='hamming',
         image='phylolib:latest',
         api_version='auto',
-        mounts=[Mount(target='/fastq', source='/opt/.fastqTest', type='bind')],
-        command='java -jar /app.jar distance hamming --dataset=ml:phylolib/data/datasets/10.txt --out=symmetric:out.txt',
+        mounts=[Mount(target='/phylolib', source='/opt/.phylolibVol', type='bind')],
+        command='distance hamming --dataset=ml:/phylolib/data/datasets/10.txt --out=symmetric:/phylolib/matrix.txt',
         auto_remove=True,
         docker_url='unix://var/run/docker.sock',
         network_mode='bridge'
@@ -32,8 +32,8 @@ with DAG('Hamming-GoeBURST-Lbr-DockerOperators', default_args=default_args, sche
         task_id='goeburst',
         image='phylolib:latest',
         api_version='auto',
-        mounts=[Mount(target='/fastq', source='/opt/.fastqTest', type='bind')],
-        command='java -jar /app.jar algorithm upgma --out=newick:tree.txt --matrix=symmetric:out.txt',
+        mounts=[Mount(target='/phylolib', source='/opt/.phylolibVol', type='bind')],
+        command='algorithm upgma --out=newick:/phylolib/tree.txt --matrix=symmetric:/phylolib/matrix.txt',
         auto_remove=True,
         docker_url='unix://var/run/docker.sock',
         network_mode='bridge'
@@ -43,8 +43,8 @@ with DAG('Hamming-GoeBURST-Lbr-DockerOperators', default_args=default_args, sche
         task_id='lbr',
         image='phylolib:latest',
         api_version='auto',
-        mounts=[Mount(target='/fastq', source='/opt/.fastqTest', type='bind')],
-        command='java -jar /app.jar optimization lbr --tree=newick:tree.txt --dataset=ml:phylolib/data/datasets/10.txt --matrix=symmetric:matrix.txt --out=newick:out.txt',
+        mounts=[Mount(target='/phylolib', source='/opt/.phylolibVol', type='bind')],
+        command='optimization lbr --tree=newick:/phylolib/tree.txt --dataset=ml:/phylolib/data/datasets/10.txt --matrix=symmetric:/phylolib/matrix.txt --out=newick:/phylolib/out.txt',
         auto_remove=True,
         docker_url='unix://var/run/docker.sock',
         network_mode='bridge'
