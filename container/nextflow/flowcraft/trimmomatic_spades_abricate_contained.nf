@@ -2,14 +2,13 @@
 
 params.saveMode = 'copy'
 params.filePattern = '../../../res/trimmomatic_spades_abricate/fastq/*_{1,2}.fastq'
-params.resultsDir = 'results'
+params.resultsDir = '.results'
 
 Channel.fromPath(params.filePattern)
         .set { ch_in_trimmomatic }
 
 process trimmomatic {
     container 'trimmomatic:latest'
-    //publishDir params.resultsDir, mode: params.saveMode
 
     input:
     file 'inFastq' from ch_in_trimmomatic
@@ -39,7 +38,6 @@ process trimmomatic {
 
 process spades {
     container 'spades:latest'
-    //publishDir params.resultsDir, mode: params.saveMode
 
     input:
     tuple 'fq_1_paired.fastq', 'fq_2_paired.fastq' from ch_out_trimmomatic
