@@ -1,0 +1,1 @@
+nextflow run trimmomatic_spades_abricate_contained.nf -with-docker trimmomatic:latest, spades:latest, abricate:latest
